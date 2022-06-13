@@ -19,6 +19,8 @@ h1 {
     margin-right: 100px;
 }
 
+
+
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -44,7 +46,18 @@ h1 {
     font-size: 36px;
 }
 
+.photographer_section article h3 {
+    color: #D3573C;
+    margin: 0;
+
+}
+
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+}
+
+article{
+    padding: 0;
 }
