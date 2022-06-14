@@ -10,12 +10,13 @@ function photographerFactory(data) {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        img.setAttribute('alt', "Fisheye Home Page" )
+        img.setAttribute('ariel-label', `${name}` )
+        img.setAttribute('alt', 'Photographes')
         img.setAttribute('role', 'img')
         article.appendChild(img);
         
-
         // For name
+
         const linkName = document.createElement( 'a' );
         linkName.textContent = name;
         linkName.setAttribute("aria-label", `${name}`)
@@ -32,7 +33,7 @@ function photographerFactory(data) {
         //  TAGLINE
 
         const tag = document.createElement('h5');
-        tag.textContent = tagline;
+        tag.textContent = tagline;6
         tag.setAttribute('aria-label', `${tagline}`)
         article.appendChild(tag);
 
