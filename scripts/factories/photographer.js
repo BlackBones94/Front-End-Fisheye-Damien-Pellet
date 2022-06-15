@@ -21,6 +21,7 @@ function photographerFactory(data) {
         linkName.textContent = name;
         linkName.setAttribute("aria-label", `${name}`)
         linkName.setAttribute("role", "link")
+        linkName.setAttribute('href', "photographer.html")
         article.appendChild(linkName);
 
         //  city et country  
