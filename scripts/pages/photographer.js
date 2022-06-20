@@ -5,6 +5,8 @@
     const photographer = await getPhotographers(id)
     photographer.photographers.forEach((photographer) => {
         if(photographer.id == id) {
+            this.imgData(photographer);
+            this.playData(photographer);
             console.log(photographer)
         }
     
@@ -27,4 +29,39 @@
                 console.log("Something not happened well")
             })
     }
+    
+
+    async function playData(photographer){
+        console.log(photographer);
+        const photographeHeader = document.querySelector(".photograph-header");
+
+
+
+            const modelHeader = photographerFactory(photographer);
+            const userCardHeader = modelHeader.getUserCardHeader(photographer);
+            photographeHeader.appendChild(userCardHeader);
+            return photographer;
+        }        
+
+    async function imgData(photographer){
+        const headerImg = document.querySelector(".photograph-header");
+
+        const modelImg = photographerFactory(photographer);
+        const userImgHeader = modelImg.getUserImgHeader(photographer);
+        headerImg.appendChild(userImgHeader);
+        return photographer;
+    }
+
+
+
+    // async function initBis() {
+    //     // Récupère les datas des photographes
+    //     const { photographer } = await getPhotographers();
+    //     imgData(photographer);
+    //     playData(photographer);
+    // };
+
+
+
+    // initBis();
     

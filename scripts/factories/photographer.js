@@ -48,5 +48,61 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, city, country, tagline, price, id, getUserCardDOM }
+   
+
+    function getUserCardHeader (photographer){
+
+        const articleModel = document.createElement("article");
+        articleModel.setAttribute('class' , 'articleTxt');
+        console.log(photographer);
+
+
+        
+        
+        // For name
+
+        const linkNameModel = document.createElement( 'a' );
+        linkNameModel.textContent = name;
+        linkNameModel.setAttribute("aria-label", `${name}`)
+        linkNameModel.setAttribute("role", "link")
+        linkNameModel.setAttribute('href', "photographer.html")
+        articleModel.appendChild(linkNameModel).href += `?id=${data.id}`;
+
+        //  city et country  
+
+        const h3Model = document.createElement('h3');
+        h3Model.textContent = city + ', ' + country;
+        h3Model.setAttribute('aria-label', `${city + country}`)
+        articleModel.appendChild(h3Model);
+
+        //  TAGLINE
+
+        const tagModel = document.createElement('h5');
+        tagModel.textContent = tagline;
+        tagModel.setAttribute('aria-label', `${tagline}`)
+        articleModel.appendChild(tagModel);
+
+        return (articleModel)
+    
+    }
+
+    function getUserImgHeader (){
+        const articleImg = document.createElement("article");
+        articleImg.setAttribute('class' , 'imgArticle');
+
+
+        const imgModel = document.createElement( 'img' );
+        imgModel.setAttribute("src", picture)
+        imgModel.setAttribute('ariel-label', `${name}` )
+        imgModel.setAttribute('alt', 'Photographes')
+        imgModel.setAttribute('role', 'img')
+        articleImg.appendChild(imgModel);
+
+        return (articleImg);
+    }
+
+
+
+    return { name, picture, city, country, tagline, price, id, getUserCardDOM, getUserCardHeader,getUserImgHeader  }
+
 }
