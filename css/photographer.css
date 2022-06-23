@@ -46,12 +46,22 @@
 
 .container-photo h2{
     color: #901C1C;
+    font-weight: 500;
+    font-size: large;
+    width: 70%;
 }
 
 .container-photo h3 {
-    display: flex;
     color: #901C1C;
+    position: relative;
+    left: 80%;
+    bottom: 92%;
 }
+
+i.fa-solid{
+    margin-left: 10px;
+}
+
 .photographer-book{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -74,6 +84,7 @@
     margin: 0;
     font-size: small;
     font-weight: lighter;
+    
 }
 
 .photograph-header   h5{

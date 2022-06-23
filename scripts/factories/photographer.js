@@ -121,11 +121,16 @@ function PhotographerMediaFactory(dataMedia) {
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement('h3');
         h2.innerHTML = title;
-        h3.innerHTML = likes;
+        h3.innerHTML = `${likes}`;
+
+        const icone = document.createElement('i');
+        icone.setAttribute('class', "fa-solid fa-heart")
 
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
+
+        h3.appendChild(icone)
 
         return (article);
     }
