@@ -5,16 +5,22 @@
     const photographer = await getPhotographers(id)
     photographer.photographers.forEach((photographer) => {
         if(photographer.id == id) {
+            // this.imgSection(photographer);
             this.imgData(photographer);
             this.playData(photographer);
             console.log(photographer)
         }
     
     })
-     const PhotographerMedia = photographer.media.filter(media => media.photographerId == id);
-     console.log(PhotographerMedia);
+     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
+
+    photographerMedia.forEach((photographerMedia)=> {
+        displayMedia(photographerMedia)
+        console.log(photographerMedia)
+    })
     })();
     
+
     
     function getPhotographersId() {
         return new URL(location.href).searchParams.get("id")
@@ -53,15 +59,21 @@
     }
 
 
-
-    // async function initBis() {
-    //     // Récupère les datas des photographes
-    //     const { photographer } = await getPhotographers();
-    //     imgData(photographer);
-    //     playData(photographer);
-    // };
-
-
-
-    // initBis();
+//  FUNCTION POUR LES MEDIA
     
+    async function displayMedia(photographerMedia){
+        const photographerBook = document.querySelector(".photographer-book");
+        const photographerBookModel = PhotographerMediaFactory(photographerMedia);
+        const UserCard = photographerBookModel.photographerBookDOM();
+        photographerBook.appendChild(UserCard);
+    }
+    
+
+// CREATION DE DIV POUR LE PHOTOBOOK
+
+document.addEventListener('DOMContentLoaded', function() {
+    const photographerBook  = document.createElement('div');
+    photographerBook .className = 'photographer-book';
+ 
+    document.getElementById("main").appendChild(photographerBook );
+});

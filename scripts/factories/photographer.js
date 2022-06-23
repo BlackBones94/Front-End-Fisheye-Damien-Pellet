@@ -82,7 +82,7 @@ function photographerFactory(data) {
         tagModel.setAttribute('aria-label', `${tagline}`)
         articleModel.appendChild(tagModel);
 
-        return (articleModel)
+        return (articleModel);
     
     }
 
@@ -101,8 +101,33 @@ function photographerFactory(data) {
         return (articleImg);
     }
 
-
-
     return { name, picture, city, country, tagline, price, id, getUserCardDOM, getUserCardHeader,getUserImgHeader  }
 
+}
+
+
+function PhotographerMediaFactory(dataMedia) {
+
+    const { id, photographerId,name, title, image,video, likes, price, date } = dataMedia;
+    function photographerBookDOM() {
+
+        const photos = `assets/samplePhotos/${image}`;
+        const article = document.createElement( 'article' );
+        article.setAttribute('class' , 'container-photo')
+        const img = document.createElement( 'img' );
+        const vid = document.createElement('video');
+        img.alt="";
+        img.setAttribute("src", photos)
+        const h2 = document.createElement( 'h2' );
+        const h3 = document.createElement('h3');
+        h2.innerHTML = title;
+        h3.innerHTML = likes;
+
+        article.appendChild(img);
+        article.appendChild(h2);
+        article.appendChild(h3);
+
+        return (article);
+    }
+    return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
 }
