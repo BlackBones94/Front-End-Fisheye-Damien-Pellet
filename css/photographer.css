@@ -67,7 +67,7 @@ i.fa-solid{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0px;
     margin-top: 100px;
-    margin: 100px;
+    margin:0px  100px;
 }
 
 
@@ -171,3 +171,50 @@ form input {
     border-radius: 5px;
 }
  
+
+/* Price container */
+
+.price-container{
+    width: 15%;
+    height: 5%;
+    margin-left: 83%;
+    display: flex;
+    border-radius: 5px 5px 0px 0px;
+    /* transform: translateX(500%); */
+    background-color:#D3573C;
+    position: sticky;
+    position: sticky; bottom: 0px;
+}
+
+/* vidéo  */
+
+
+.container-photo video{
+    width: 250px;
+    height: 250px;
+}
+
+
+/* MENU TRIER  */
+
+.drop-menu{
+    margin: 0 100px;
+    display: flex;
+}
+
+.title-menu{
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.drop-down{
+    width: 100px;
+    height: 40px;
+    position: relative;
+    top: 25px; 
+    margin-left: 2%;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    color: white;
+}

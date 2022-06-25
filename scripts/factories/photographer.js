@@ -5,8 +5,6 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        // article.setAttribute("id" , "articleId")
-        // article.setAttribute('href', "photographer.html")
         // For portrait
 
         const img = document.createElement( 'img' );
@@ -108,16 +106,21 @@ function photographerFactory(data) {
 
 function PhotographerMediaFactory(dataMedia) {
 
+ 
     const { id, photographerId,name, title, image,video, likes, price, date } = dataMedia;
     function photographerBookDOM() {
 
+
         const photos = `assets/samplePhotos/${image}`;
+        // const vidéoPhotos = `assets/videos/${video}`;
+        // console.log(vidéoPhotos);
         const article = document.createElement( 'article' );
         article.setAttribute('class' , 'container-photo')
         const img = document.createElement( 'img' );
         const vid = document.createElement('video');
         img.alt="";
         img.setAttribute("src", photos)
+        // vid.setAttribute("src", vidéoPhotos)
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement('h3');
         h2.innerHTML = title;
@@ -126,6 +129,7 @@ function PhotographerMediaFactory(dataMedia) {
         const icone = document.createElement('i');
         icone.setAttribute('class', "fa-solid fa-heart")
 
+        // article.appendChild(vid);
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
@@ -134,5 +138,54 @@ function PhotographerMediaFactory(dataMedia) {
 
         return (article);
     }
-    return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
+
+
+    function videoBookDOM(){
+        
+        const vidéoPhotos = `assets/videos/${video}`;
+        console.log(vidéoPhotos);
+        const article = document.createElement( 'article' );
+        article.setAttribute('class' , 'container-photo')
+        const vid = document.createElement('video');
+        vid.setAttribute("src", vidéoPhotos)
+        const h2 = document.createElement( 'h2' );
+        const h3 = document.createElement('h3');
+        h2.innerHTML = title;
+        h3.innerHTML = `${likes}`;
+
+        const icone = document.createElement('i');
+        icone.setAttribute('class', "fa-solid fa-heart")
+
+        article.appendChild(vid);
+        article.appendChild(h2);
+        article.appendChild(h3);
+
+        h3.appendChild(icone)
+
+        return (article);
+    }
+  
+
+
+    return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM, videoBookDOM }
+}
+
+
+function priceLikesFactory (dataPrice){
+
+    const { name, portrait, city, country, tagline, price ,id} = dataPrice;
+
+    function  priceModelDom(){
+        const articlePrice = document.createElement('article');
+
+            const p = document.createElement('p');
+            p.innerHTML = `${price}`+ 'Є/jour';
+
+            articlePrice.appendChild(p);
+
+            return (articlePrice);
+        } 
+            
+
+    return {name, portrait, city, country, tagline, price ,id, priceModelDom}
 }
