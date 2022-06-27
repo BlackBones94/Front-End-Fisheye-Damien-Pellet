@@ -38,11 +38,20 @@
     flex-direction: column
 }
 
+/* container photo */
+.container-photo video{
+    width: 250px;
+    border-radius: 2%;
+    height: 250px;
+    background-color: #fafafa;
+}
+
 .container-photo img{
     width: 250px;
     height: 250px;
     border-radius: 2%;
 }
+
 
 .container-photo h2{
     color: #901C1C;
@@ -56,6 +65,7 @@
     position: relative;
     left: 80%;
     bottom: 92%;
+    width: 60px;
 }
 
 i.fa-solid{
@@ -64,7 +74,7 @@ i.fa-solid{
 
 .photographer-book{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 0fr 1fr 0fr;
     gap: 0px;
     margin-top: 100px;
     margin:0px  100px;

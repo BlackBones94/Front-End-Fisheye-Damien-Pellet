@@ -9,34 +9,34 @@
             this.imgData(photographer);
             this.playData(photographer);
             priceData(photographer)
+
             // console.log(photographer)
         }
-    
     })
-     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
+
+
+    const photographerMedia = photographer.media.filter(media => media.photographerId == id);
+
+    let mediaLikesTable = [];
+    let totalLikes = 0;
+
 
     photographerMedia.forEach((photographerMedia)=> {
-        this.displayMedia(photographerMedia)
-        // priceData(photographerMedia)
-        // this.MonFiltre(photographerMedia)
-        // console.log(photographerMedia)
+        this.displayMedia(photographerMedia);
+        mediaLikesTable.push(photographerMedia.likes);
+
     })
 
-    const photographerVideos = photographer.media.filter(media => media.video != null)
-    photographerVideos.forEach((value)  =>{
-        if(value.photographerId == value.id){
-            console.log(value.id)
-        }
-    })
-
-    console.log(testVideo)
-    photographerVideos.forEach((photographerVideos) => {
-        this.displayVideo(photographerVideos);
-    })
-    console.log(photographerVideos);
-    })();
     
+    for(i = 0; i < mediaLikesTable.length; i++) {
+        totalLikes += mediaLikesTable[i];
+    }
 
+    console.log(totalLikes);
+    })();
+
+
+///////////////////
     
     function getPhotographersId() {
         return new URL(location.href).searchParams.get("id")
@@ -72,8 +72,6 @@
         return photographer;
     }
 
-
-
 //  FUNCTION POUR LES MEDIA
     
     async function displayMedia(photographerMedia){
@@ -82,15 +80,6 @@
         const UserCard = photographerBookModel.photographerBookDOM();
         photographerBook.appendChild(UserCard);
     }
-
-// FUNCTION POUR LES VIDEOS 
- async function displayVideo(photographerVideos) {
-    const videoBook = document.querySelector('.photographer-book');
-    const videoBookModel = PhotographerMediaFactory(photographerVideos);
-    const videoCard = videoBookModel.videoBookDOM();
-    videoBook.appendChild(videoCard);
- }
-
     
 
 // CREATION DE DIV POUR LE MENU TRIER ET TITLE MENU  ET SELECT OPTION
@@ -147,6 +136,3 @@ document.getElementById("main").appendChild(photographerBook);
     const priceCard = priceModel.priceModelDom();
     staticPrice.appendChild(priceCard);
  }
-
-
- const arrayLikes = []
