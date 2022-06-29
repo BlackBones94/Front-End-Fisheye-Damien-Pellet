@@ -1,4 +1,20 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// fetch du json 
+
+async function getPhotographers() {
+    return fetch('./data/photographers.json')
+        .then((response) =>
+           response.json()
+        )
+        .catch(function(){
+            console.log("Something not happened well")
+        })
+}
+
+function getPhotographersId() {
+    return new URL(location.href).searchParams.get("id")
+}
+
+
 (async function() {
     const id = getPhotographersId();
     console.log(id)
@@ -8,50 +24,26 @@
         if(photographer.id == id) {
             this.imgData(photographer);
             this.playData(photographer);
-            priceData(photographer)
-
+            this.priceData(photographer);
             // console.log(photographer)
         }
     })
 
-
     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
-
     let mediaLikesTable = [];
     let totalLikes = 0;
 
-
     photographerMedia.forEach((photographerMedia)=> {
         this.displayMedia(photographerMedia);
+        likesData(photographerMedia)
         mediaLikesTable.push(photographerMedia.likes);
-
+        // calcule du total de like par photographe 
+        totalLikes += photographerMedia.likes;
     })
-
-    
-    for(i = 0; i < mediaLikesTable.length; i++) {
-        totalLikes += mediaLikesTable[i];
-    }
 
     console.log(totalLikes);
     })();
 
-
-///////////////////
-    
-    function getPhotographersId() {
-        return new URL(location.href).searchParams.get("id")
-    }
-    
-    async function getPhotographers() {
-        return fetch('./data/photographers.json')
-            .then((response) =>
-               response.json()
-            )
-            .catch(function(){
-                console.log("Something not happened well")
-            })
-    }
-    
 
     async function playData(photographer){
         console.log(photographer);
@@ -72,48 +64,6 @@
         return photographer;
     }
 
-//  FUNCTION POUR LES MEDIA
-    
-    async function displayMedia(photographerMedia){
-        const photographerBook = document.querySelector(".photographer-book");
-        const photographerBookModel = PhotographerMediaFactory(photographerMedia);
-        const UserCard = photographerBookModel.photographerBookDOM();
-        photographerBook.appendChild(UserCard);
-    }
-    
-
-// CREATION DE DIV POUR LE MENU TRIER ET TITLE MENU  ET SELECT OPTION
-
-const dropMenu = document.createElement('div');
-dropMenu.className= 'drop-menu';
-document.getElementById("main").appendChild(dropMenu);
-
-const titleMenu = document.createElement('h5');
-titleMenu.setAttribute('class', 'title-menu')
-titleMenu.textContent = 'Trier par';
-
-const selectMenu = document.createElement('select');
-selectMenu.setAttribute('class', 'drop-down');
-
-const optionSelectOne = document.createElement('option');
-optionSelectOne.setAttribute('value', 'Popularité');
-optionSelectOne.textContent = 'Popularité';
-
-const optionSelectTwo = document.createElement('option');
-optionSelectTwo.setAttribute('value', 'Date');
-optionSelectTwo.textContent = 'Date';
-
-const optionSelectThree = document.createElement('option');
-optionSelectThree.setAttribute('value', 'Titre');
-optionSelectThree.textContent = 'Titre';
-
-
-dropMenu.appendChild(titleMenu);
-dropMenu.appendChild(selectMenu);
-
-selectMenu.appendChild(optionSelectOne);
-selectMenu.appendChild(optionSelectTwo);
-selectMenu.appendChild(optionSelectThree);
 
 // CREATION DE DIV POUR LE PHOTOBOOK
 
@@ -121,7 +71,14 @@ const photographerBook  = document.createElement('div');
 photographerBook .className = 'photographer-book';
 
 document.getElementById("main").appendChild(photographerBook);
-
+//  FUNCTION POUR LES MEDIA
+    
+async function displayMedia(photographerMedia){
+    const photographerBook = document.querySelector(".photographer-book");
+    const photographerBookModel = PhotographerMediaFactory(photographerMedia);
+    const UserCard = photographerBookModel.photographerBookDOM();
+    photographerBook.appendChild(UserCard);
+}
 
 // creation d'une div pour le static price 
 
@@ -136,3 +93,46 @@ document.getElementById("main").appendChild(photographerBook);
     const priceCard = priceModel.priceModelDom();
     staticPrice.appendChild(priceCard);
  }
+
+ async function likesData(photographerMedia){
+     const staticLikes = document.querySelector('.price-container');
+     const likesModel = priceLikesFactory(photographerMedia);
+     const likesCard = likesModel.likeModelDom();
+     staticLikes.appendChild(likesCard)
+ }
+
+// CREATION DE DIV POUR LE MENU TRIER ET TITLE MENU  ET SELECT OPTION
+
+// const dropMenu = document.createElement('div');
+// dropMenu.className= 'drop-menu';
+// document.getElementById("main").appendChild(dropMenu);
+
+// const titleMenu = document.createElement('h5');
+// titleMenu.setAttribute('class', 'title-menu')
+// titleMenu.textContent = 'Trier par';
+
+// const selectMenu = document.createElement('select');
+// selectMenu.setAttribute('class', 'drop-down');
+
+// const optionSelectOne = document.createElement('option');
+// optionSelectOne.setAttribute('value', 'Popularité');
+// optionSelectOne.textContent = 'Popularité';
+
+// const optionSelectTwo = document.createElement('option');
+// optionSelectTwo.setAttribute('value', 'Date');
+// optionSelectTwo.textContent = 'Date';
+
+// const optionSelectThree = document.createElement('option');
+// optionSelectThree.setAttribute('value', 'Titre');
+// optionSelectThree.textContent = 'Titre';
+
+
+// dropMenu.appendChild(titleMenu);
+// dropMenu.appendChild(selectMenu);
+
+// selectMenu.appendChild(optionSelectOne);
+// selectMenu.appendChild(optionSelectTwo);
+// selectMenu.appendChild(optionSelectThree);
+
+
+

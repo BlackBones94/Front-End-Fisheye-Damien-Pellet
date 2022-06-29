@@ -17,7 +17,16 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="drop-menu">
+        <h5 class="title-menu">Trier par</h5>
+        <select class="drop-down">
+          <option value="Popularité">Popularité</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+        </select>
+      </div>
     </main>
+    
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -33,6 +42,8 @@
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/factories/static.js"></script>
+    <script src="scripts/factories/index.js"></script>
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
