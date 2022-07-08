@@ -1,20 +1,20 @@
-function priceLikesFactory (dataPrice){
+// function priceLikesFactory (dataPrice){
 
-    const { name, portrait, city, country, tagline, price ,id, likes} = dataPrice;
+//     const { price} = dataPrice;
 
-    function  priceModelDom(){
-        const articlePrice = document.createElement('article');
+//     function  priceModelDom(){
 
-            const p = document.createElement('p');
-            p.innerHTML = `${price}`+ 'Є/jour';
+//         const articlePrice = document.createElement('article');
 
+//             const p = document.createElement('p');
+
+//             p.innerHTML = `${price}`+ 'Є/jour';
             
 
-            articlePrice.appendChild(p);
-
-            return (articlePrice);
-        } 
+//             articlePrice.appendChild(p);
+//             return (articlePrice);
+//         } 
 
     
-    return {dataPrice ,priceModelDom}
-}
+//     return {dataPrice ,priceModelDom}
+// }

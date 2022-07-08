@@ -20,14 +20,41 @@ function getPhotographersId() {
     console.log(id)
     const photographer = await getPhotographers(id)
 
+    const heartIcone  = document.createElement('i');
+    heartIcone.setAttribute('class', "fa-solid fa-heart");
+
+    const paragrapheLikes = document.createElement('p');
+    paragrapheLikes.setAttribute('class' , 'like-paragraphe');
+    const photographerLikes = document.querySelector(".price-container").appendChild(paragrapheLikes);
+    // document.querySelector('.price-container').appendChild(heartIcone)
+    const paragraphePrice = document.createElement('p');
+    paragraphePrice.setAttribute('class' , 'price-paragraphe');
+    const photographerPrice = document.querySelector('.price-container').appendChild(paragraphePrice);
+
+    let mediaPriceTable =[];
+    let totalPrice = 0;
+
+   
+
+
     photographer.photographers.forEach((photographer) => {
         if(photographer.id == id) {
+            // recuperation et implentation du name dans la modal 
+            const modal = document.getElementById("modalTitle");
+            const div = document.createElement('div')
+            modal.appendChild(div);
+            div.innerHTML = photographer.name;
+
             this.imgData(photographer);
             this.playData(photographer);
             this.priceData(photographer);
-            // console.log(photographer)
+            mediaPriceTable.push(photographer.price);
+            totalPrice += photographer.price;
         }
+        photographerPrice.innerHTML =`${totalPrice}`+ '€ / jour';
+      
     })
+
 
     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
     let mediaLikesTable = [];
@@ -35,14 +62,14 @@ function getPhotographersId() {
 
     photographerMedia.forEach((photographerMedia)=> {
         this.displayMedia(photographerMedia);
-        likesData(photographerMedia)
         mediaLikesTable.push(photographerMedia.likes);
-        // calcule du total de like par photographe 
         totalLikes += photographerMedia.likes;
     })
+    photographerLikes.innerHTML = `${totalLikes}`;
 
-    console.log(totalLikes);
-    })();
+    console.log(heartIcone)
+})();
+
 
 
     async function playData(photographer){
@@ -68,7 +95,7 @@ function getPhotographersId() {
 // CREATION DE DIV POUR LE PHOTOBOOK
 
 const photographerBook  = document.createElement('div');
-photographerBook .className = 'photographer-book';
+photographerBook.className = 'photographer-book';
 
 document.getElementById("main").appendChild(photographerBook);
 //  FUNCTION POUR LES MEDIA
@@ -86,6 +113,7 @@ async function displayMedia(photographerMedia){
     staticPrice.className= 'price-container';
     document.getElementById('main').appendChild(staticPrice);
 
+
  async function priceData(photographer){
     
     const staticPrice = document.querySelector('.price-container');
@@ -93,46 +121,4 @@ async function displayMedia(photographerMedia){
     const priceCard = priceModel.priceModelDom();
     staticPrice.appendChild(priceCard);
  }
-
- async function likesData(photographerMedia){
-     const staticLikes = document.querySelector('.price-container');
-     const likesModel = priceLikesFactory(photographerMedia);
-     const likesCard = likesModel.likeModelDom();
-     staticLikes.appendChild(likesCard)
- }
-
-// CREATION DE DIV POUR LE MENU TRIER ET TITLE MENU  ET SELECT OPTION
-
-// const dropMenu = document.createElement('div');
-// dropMenu.className= 'drop-menu';
-// document.getElementById("main").appendChild(dropMenu);
-
-// const titleMenu = document.createElement('h5');
-// titleMenu.setAttribute('class', 'title-menu')
-// titleMenu.textContent = 'Trier par';
-
-// const selectMenu = document.createElement('select');
-// selectMenu.setAttribute('class', 'drop-down');
-
-// const optionSelectOne = document.createElement('option');
-// optionSelectOne.setAttribute('value', 'Popularité');
-// optionSelectOne.textContent = 'Popularité';
-
-// const optionSelectTwo = document.createElement('option');
-// optionSelectTwo.setAttribute('value', 'Date');
-// optionSelectTwo.textContent = 'Date';
-
-// const optionSelectThree = document.createElement('option');
-// optionSelectThree.setAttribute('value', 'Titre');
-// optionSelectThree.textContent = 'Titre';
-
-
-// dropMenu.appendChild(titleMenu);
-// dropMenu.appendChild(selectMenu);
-
-// selectMenu.appendChild(optionSelectOne);
-// selectMenu.appendChild(optionSelectTwo);
-// selectMenu.appendChild(optionSelectThree);
-
-
 
