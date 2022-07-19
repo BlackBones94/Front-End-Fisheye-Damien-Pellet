@@ -67,11 +67,18 @@
     left: 80%;
     bottom: 92%;
     width: 60px;
+    cursor: pointer;
 }
 
-i.fa-solid{
+.fa-solid{
     margin-left: 10px;
-}
+} 
+/* #iconeHeart {
+     border: none;
+     background-color: white;
+     color: #901C1C;
+    
+} */
 
 .photographer-book{
     display: grid;
@@ -289,15 +296,15 @@ form input {
 }
 
 .lightbox__container img{
-    width: 1050px;
-    height: 700px;
-    object-fit: initial;
+    width: 70%;
+    height: 680px;
+    object-fit: cover;
 }
 
 .lightbox__container video{
-    width: 1050px;
-    height: 700px;
-    object-fit: initial;
+    width: 70%;
+    height: 680px;
+    object-fit: cover;
 }
 
 .lightbox__close {
@@ -347,4 +354,12 @@ form input {
     border: 2px solid #95FFF9;
     z-index: 10;
     margin: auto 0;
+}
+
+.lightbox__text {
+    padding-left: 15%;
+    color: #901C1C;
+    size: 24px;
+    line-height: 31.25px;
+    font-weight: 400;
 }

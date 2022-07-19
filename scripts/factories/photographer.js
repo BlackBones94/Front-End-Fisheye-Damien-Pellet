@@ -9,6 +9,7 @@ function PhotographerMediaFactory(dataMedia) {
     function photographerBookDOM() {
 
         const article = document.createElement( 'article' );
+        const totalLikes = document.querySelector('.like-paragraphe');
         article.setAttribute('class' , 'container-photo')
         const img = document.createElement( 'img' );
         const vid = document.createElement('video');
@@ -18,11 +19,15 @@ function PhotographerMediaFactory(dataMedia) {
         
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement('h3');
+
+        h3.setAttribute('id' , 'likesNombers');
+
         h2.innerHTML = title;
         h3.innerHTML = `${likes}`;
 
         const icone = document.createElement('i');
         icone.setAttribute('class', "fa-solid fa-heart")
+        // icone.setAttribute('id' , 'iconeHeart');
 
 
         article.appendChild(img);
@@ -30,6 +35,7 @@ function PhotographerMediaFactory(dataMedia) {
         article.appendChild(h3);
       
         h3.appendChild(icone)
+
 
         if(!image){
             article.removeChild(img)
@@ -47,6 +53,15 @@ function PhotographerMediaFactory(dataMedia) {
             source.setAttribute("src", vidéoPhotos)
         }
 
+        h3.addEventListener('click', function() {
+            let compteurLikes = `${likes}`
+            compteurLikes++;
+            h3.innerHTML= compteurLikes;
+            h3.appendChild(icone)
+            totalLikes.innerHTML++
+        })
+
+
         img.addEventListener('click' , function() {
             const divLightbox = document.createElement('div');
             const main = document.getElementById('main');
@@ -55,18 +70,27 @@ function PhotographerMediaFactory(dataMedia) {
             const  previousBtn = document.createElement('button');
             const container = document.createElement('div');
             const image_lightbox = document.createElement('img');
+            const textPhoto = document.createElement('h2');
+            const containerText = document.createElement('div');
+            textPhoto.innerHTML = title;
 
+            containerText.classList.add('lightbox__text')
             container.classList.add('lightbox__container');
             closeBtn.classList.add('lightbox__close');
             previousBtn.classList.add('lightbox__previous');
             nextBtn.classList.add('lightbox__next');
+            textPhoto.classList.add('lightbox__name');
+
 
             main.appendChild(divLightbox);
             divLightbox.appendChild(closeBtn);
             divLightbox.appendChild(container);
+            divLightbox.appendChild(containerText);
             container.appendChild(nextBtn)
             container.appendChild(image_lightbox)
             container.appendChild(previousBtn)
+            containerText.appendChild(textPhoto);
+
 
             image_lightbox.setAttribute('src' , photos)
             image_lightbox.setAttribute('alt' , "")
@@ -85,19 +109,27 @@ function PhotographerMediaFactory(dataMedia) {
             const  previousBtn = document.createElement('button');
             const container = document.createElement('div');
             const video_lightbox = document.createElement('video');
+            const textPhoto = document.createElement('h2');
+            const containerText = document.createElement('div');
+            textPhoto.innerHTML = title;
 
+            containerText.classList.add('lightbox__text')
             container.classList.add('lightbox__container');
             closeBtn.classList.add('lightbox__close');
             previousBtn.classList.add('lightbox__previous');
             nextBtn.classList.add('lightbox__next');
+            textPhoto.classList.add('lightbox__name');
 
             main.appendChild(divLightbox);
             divLightbox.appendChild(closeBtn);
             divLightbox.appendChild(container);
-            container.appendChild(nextBtn)
-            container.appendChild(video_lightbox)
-            container.appendChild(previousBtn)
+            divLightbox.appendChild(containerText);
+            container.appendChild(nextBtn);
+            container.appendChild(video_lightbox);
+            container.appendChild(previousBtn);
+            containerText.appendChild(textPhoto);
 
+            
             video_lightbox.setAttribute('src' , vidéoPhotos)
             video_lightbox.setAttribute('type' , "video/mp4")
             video_lightbox.controls = true;
@@ -105,9 +137,26 @@ function PhotographerMediaFactory(dataMedia) {
 
             divLightbox.setAttribute('id', 'lightbox');
             divLightbox.classList.add('lightbox');
+
         })
+
+    //     const likesCompteur = `${likes}`
+
+    //     function comptage() {
+    //         likesCompteur++;
+    //         document.getElementById("likesNombers");
+            
+    //     }
+
+    //    console.log(likesCompteur);
+
+        // document.getElementById("likesNombers").addEventListener("click", comptage);
+        
+ 
         return (article);
     }
 
+
+    
     return {dataMedia, photographerBookDOM }
 }
