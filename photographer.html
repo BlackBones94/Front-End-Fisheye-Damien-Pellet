@@ -7,63 +7,34 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body>
     <header  role="banner">
       <a href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page - Page d'accueil"/>
       </a>
     </header>
-    <main id="main" role="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-      <nav>
-        <div class="drop-menu">
-          <h5 class="title-menu" >Trier par</h5>
-          <select class="drop-down" aria-label="Menu déroulant" aria-haspopup="true" role="menubar">
-            <option value="Popularité" tabindex="0" aria-expanded="true" aria-label="Popularité">Popularité</option>
-            <option value="Date" tabindex="1" aria-expanded="true" aria-label="Date">Date</option>
-            <option value="Titre" tabindex="2" aria-expanded="true" aria-label="Titre">Titre</option>
-          </select>
-        </div>
-      </nav>
+    <body>
+      <!-- Factories -->
+
+    <main id="hidden" >
+        <div class="photograph-header"></div>
+  
+        <div class="selectBox"></div>
+  
+        <div class="portfolio-section" aria-hidden="false"></div>
+  
+        <div class="likesBox"></div>
     </main>
-    
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2 id="modalTitle">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form id='form' action="photographer.html" methode="get" name="theForm" aria-label="Formulaire à compléter">
-					<div class="formData" >
-						<label for="first">Prénom</label>
-						<input class="text-control" id="first" type="text" name="first" required/>
 
-            <label  for="last">Nom</label>
-            <input class="text-control" id="last" type="text" name="last" required/>
+      <div class="modal-form" role="dialog" aria-hidden="false"></div>
 
-            <label for="mail">Email</label>
-            <input class="text-control" id="mail" type="email" name="email" required/>
+      <div class="slider-modal" aria-hidden="true"></div>
+   
+    <script src="./scripts/factories/photographer.js"></script>
+    <script src="./scripts/utils/static.js"></script>
+    <script src="./scripts/utils/selectBox.js"></script>
+    <script src="./scripts/utils/slider.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
 
-            <label for="commentary">Votre message</label>
-            <textarea class="text-control" id="commentary" type="text" name="commentary"></textarea>
-					</div>
-          <button class="contact_modal" type="submit" role="button" onclick="validateForm()" >Envoyer</button>
-				</form>
-			</div>
-		</div>
-
-    <!-- <div id="myLightbox">
-
-    </div> -->
-
-    <script src="/scripts/factories/static.js"></script>
-    <script src="scripts/factories/index.js"></script>
-    <script src="/scripts/factories/photographer.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="https://kit.fontawesome.com/3be84c4c65.js" crossorigin="anonymous"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

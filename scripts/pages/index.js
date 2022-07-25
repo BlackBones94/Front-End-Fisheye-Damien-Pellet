@@ -1,11 +1,30 @@
+    // async function getPhotographers() {
+    //     return fetch('./data/photographers.json')
+    //         .then((response) => response.json())
+    //         .catch(function(){
+    //             console.log("Something not happened well" )
+    //         })
+    //     }
     async function getPhotographers() {
-        return fetch('./data/photographers.json')
-            .then((response) => response.json())
-            .catch(function(){
-                console.log("Something not happened well" )
-            })
+        const res = await fetch("data/photographers.json", {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+      
+        const data = await res.json();
+      /*si les données sont inexistantes dans localStorage alors retourne les données
+       à l'interieur*/
+        if (localStorage.getItem("data") == null) {
+          localStorage.setItem("data", JSON.stringify(data));
         }
-
+        return {
+          //mettre les données fetch par localstorage
+          photographers: JSON.parse(localStorage.getItem("data")).photographers,
+      
+          photographers: [...data.photographers],
+        };
+      }
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
         
