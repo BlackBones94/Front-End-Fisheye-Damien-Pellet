@@ -1,7 +1,10 @@
 // facto pour media 
 
+// creation et utilisation de class avec la methode static 
+
+// video 
 class VideoMediaSubFactory {
-    static render(video, title, type) {
+    static elt (video, title, type) {
         return `
         <video controls preload='metadata' id="ctrls-vid" class="media-${type}-img lb-target" aria-label="intitulé du média ${title}">
             <source src="assets/videos/${video}" type = "video/mp4">
@@ -9,9 +12,9 @@ class VideoMediaSubFactory {
         `;
     }
 }
-
+// images
 class ImageMediaSubFactory {
-    static render (image, title, type) {
+   static elt (image, title, type) {
         return `
         <img class="media-${type}-img lb-target" src="assets/newSamplePhotos/${image}" alt="intitulé du média ! ${title}"/>
         `;
@@ -32,8 +35,10 @@ function mediaFactory(data, photographer) {
 
         ${
             image
-            ? ImageMediaSubFactory.render(image,title,"card", name)
-            : VideoMediaSubFactory.render(video, title , "card", name)
+            // si contient image retourner les image 
+            ? ImageMediaSubFactory.elt(image,title,"card", name)
+            // sinon la video 
+            : VideoMediaSubFactory.elt(video, title , "card", name)
         }
             <div class="media-card-text">
                 <span class="media-card-title">${title}</span>
@@ -68,8 +73,10 @@ function mediaFactory(data, photographer) {
          
         ${
           image
-            ? ImageMediaSubFactory.render(image, title, "slide", name)
-            : VideoMediaSubFactory.render(video, title, "slide", "300", name)
+            // si contient image retourner les image 
+            ? ImageMediaSubFactory.elt(image, title, "slide", name)
+            // sinon vidéo 
+            : VideoMediaSubFactory.elt(video, title, "slide", name)
         } 
           
                 </div>

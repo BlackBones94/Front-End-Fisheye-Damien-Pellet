@@ -1,3 +1,6 @@
+// recreation du formulaire selon le html existant 
+
+
 function formulaire(name, baseURL, id) {
     const ModalForm = document.querySelector(".modal-form");
     ModalForm.innerHTML = `<div class="windowContact">
@@ -89,6 +92,7 @@ function formulaire(name, baseURL, id) {
     const Contactbtn = document.querySelector(".contact_button");
     Contactbtn.onclick = () => {
       ModalForm.style.display = "block";
+      // ajout du focus sur input 
       document.getElementById("prenom").focus();
    }; 
     //Close modal formulaire by cross
@@ -104,7 +108,8 @@ function formulaire(name, baseURL, id) {
      let email = document.querySelector("#email");
  
     form.addEventListener("submit", (e) => {
-     e.preventDefault();
+      e.preventDefault();
+      // console log des value et alert envoye si ok 
       alert("Formulaire envoyé");
       console.log(firstName.value);
       console.log(lastName.value);

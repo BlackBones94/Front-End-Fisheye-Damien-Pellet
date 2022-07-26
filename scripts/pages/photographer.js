@@ -1,16 +1,14 @@
-// fetch du json 
-
-
+// Data recuperer par local storage
 async function getData(photographerId) {
-    const res = await fetch("data/photographers.json", {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    // const res = await fetch("data/photographers.json", {
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    // });
     //all data
     //const data = await res.json();
     const data = JSON.parse(localStorage.getItem("data"));
-    //console.log(data);
+    console.log(data);
   
     //photographer par id
     const photographer = data.photographers.find((p) => p.id === photographerId);
@@ -22,12 +20,15 @@ async function getData(photographerId) {
     // console.log(portfolio);
   
     //data name
+
     const pathName = photographer.name;
   
     //likes box
     const totalLikes = portfolio.reduce((acc, curr) => {
       return acc + curr.likes;
     }, 0);
+
+
     //price box
     const dayPrice = photographer.price;
     
@@ -77,13 +78,16 @@ async function getData(photographerId) {
   
   //initialisation de la page medias
   async function init() {
+    // chaine de requete 
     const urlParams = new URLSearchParams(window.location.search);
+    // analyse de la chaine et renvoi un element 
     const photographerId = parseInt(urlParams.get("photographer"));
+
     const { photographer, portfolio, pathName, totalLikes, dayPrice } =
       await getData(photographerId);
     displayPhotographerInfo(photographer);
   
-  
+  // Methode sort qui trie les element d'un tableau 
     const triPopularite = portfolio.sort((a, b) => {
       return a.likes < b.likes ? 1 : -1;
     });

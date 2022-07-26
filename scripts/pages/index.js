@@ -1,10 +1,4 @@
-    // async function getPhotographers() {
-    //     return fetch('./data/photographers.json')
-    //         .then((response) => response.json())
-    //         .catch(function(){
-    //             console.log("Something not happened well" )
-    //         })
-    //     }
+    
     async function getPhotographers() {
         const res = await fetch("data/photographers.json", {
           headers: {
@@ -16,6 +10,7 @@
       /*si les données sont inexistantes dans localStorage alors retourne les données
        à l'interieur*/
         if (localStorage.getItem("data") == null) {
+          // convertit une valeur JS en chaine JSON
           localStorage.setItem("data", JSON.stringify(data));
         }
         return {
@@ -26,6 +21,7 @@
         };
       }
     async function displayData(photographers) {
+      // rattachement const a la classe 
         const photographersSection = document.querySelector(".photographer_section");
         
         
@@ -44,8 +40,6 @@
         displayData(photographers);
 
     };
-
-
 
     init();
     

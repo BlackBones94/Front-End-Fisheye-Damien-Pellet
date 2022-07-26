@@ -21,7 +21,7 @@ function likesInfos(totalLikes, dayPrice) {
  //increment likes
  const incrementButton = document.querySelectorAll(".media-card-likes");
  const likesTotal = document.querySelector(".numberLikesBox");
-
+// boucle qui increment un de plus au click
  for (let i = 0; i < incrementButton.length; i++) {
    incrementButton[i].addEventListener("click", function (event) {
      
@@ -31,6 +31,7 @@ function likesInfos(totalLikes, dayPrice) {
 
      let textLikeValue = textLike.innerHTML;
 
+    //  return la chaine avec +1
      let newValue = parseInt(textLikeValue) + 1;
 
       likesTotal.innerHTML = ++totalBox;
