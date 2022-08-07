@@ -566,7 +566,7 @@ form input {
     ;
     opacity: 1;
     cursor: pointer;
-    z-index: 1;
+    z-index: 19999999999999999999999999999999;
   }
   
   .arrow-left {

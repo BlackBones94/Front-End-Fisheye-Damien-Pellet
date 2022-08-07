@@ -1,3 +1,4 @@
+
 // Data recuperer par local storage
 async function getData(photographerId) {
     // const res = await fetch("data/photographers.json", {
@@ -20,7 +21,6 @@ async function getData(photographerId) {
     // console.log(portfolio);
   
     //data name
-
     const pathName = photographer.name;
   
     //likes box
@@ -48,9 +48,9 @@ async function getData(photographerId) {
     const header = document.querySelector(".photograph-header");
     header.innerHTML = `<div class="card2-bio">
           <div class="infos-photographer-media">
-            <h1 class="photographer-name">${name}</h1>
-            <p class="location">${city}, ${country}</p>
-            <p class="tagline">${tagline}</p>
+            <h1 class="photographer-name" aria-label= "nom ${name}">${name}</h1>
+            <p class="location" aria-label= "${city}, ${country}">${city}, ${country}</p>
+            <p class="tagline" aria-label="${tagline}">${tagline}</p>
             </div>
             <div class="container-contact">
           <button role="button" class="contact_button" aria-label="Contacter ${name}">
@@ -63,18 +63,45 @@ async function getData(photographerId) {
           </div>`;
   }
   
-  function displayMedia(portfolioArray, photographer) {
+  function displayMedia(portfolioArray) {
+    // let galleryContainer = "" ;
+    // let gallerySlider = "";
     const portfolioSection = document.querySelector(".portfolio-section");
+    console.log(portfolioSection)
     const lightboxSection = document.querySelector(".slider-modal");
     portfolioSection.innerHTML = "";
     portfolioArray.forEach((portfolioItem) => {
-      const mediaModel = mediaFactory(portfolioItem, photographer);
+      const mediaModel = new MediaFactorie(portfolioItem);
+      // console.log(portfolioItem);
+      // console.log(mediaModel);
       const mediaCardDOM = mediaModel.getMediaCardDOM();
       const mediaSlidesDOM = mediaModel.getMediaSlidesDOM();
-      portfolioSection.appendChild(mediaCardDOM);
-      lightboxSection.appendChild(mediaSlidesDOM);
+      // console.log(mediaSlidesDOM)
+      portfolioSection.innerHTML += mediaCardDOM;
+      lightboxSection.innerHTML += mediaSlidesDOM;
     });
+    // lightboxSection.innerHTML = gallerySlider
+    // portfolioSection.innerHTML = galleryContainer;
   }
+  
+
+  
+
+  // function displayMedia() {
+  //   const mediaModel = []
+  //   const portfolioSection = document.querySelector(".portfolio-section");
+  //   const lightboxSection = document.querySelector(".slider-modal");
+  //   portfolioSection.innerHTML = "";
+  //   data.photographers.forEach( media => {
+  //     const mediaData = data.media.filter( photographer => {
+  //       return media.photographerId === photographerId
+  //     });
+  //     mediaModel.push( new Photographer(photographer, mediaData)) 
+  //     const mediaCardDOM = mediaModel.getMediaCardDOM();
+  //     portfolioSection.appendChild(mediaCardDOM);
+  //   })
+  //     return mediaModel
+  // }
   
   //initialisation de la page medias
   async function init() {
@@ -106,4 +133,8 @@ async function getData(photographerId) {
     enableLightboxListeners();
   }
   
+  
   init();
+
+
+

@@ -29,7 +29,7 @@ const selectOptions = document.querySelector('#select-block-options');
 
 let firstButtonText = document.querySelector('#select-first-option-text');
 
-const arrow = document.querySelector('.arrow-down-open')
+const arrow = document.querySelector('.arrow-down-open')  
 
 const optionsButtons = selectOptions.querySelectorAll('button');
 

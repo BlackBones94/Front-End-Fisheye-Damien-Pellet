@@ -43,3 +43,8 @@ function likesInfos(totalLikes, dayPrice) {
    
  }
 }
+
+
+
+
+

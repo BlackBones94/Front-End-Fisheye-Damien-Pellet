@@ -1,5 +1,4 @@
-const sliderContainer = document
-  .querySelector(".slider-modal")
+const sliderContainer = document.querySelector(".slider-modal")
 sliderContainer.innerHTML = `
  <div class="slider-container" >
    <div class="arrow-left-container">
@@ -16,9 +15,6 @@ sliderContainer.innerHTML = `
    
  </div>`;
 
-const prevBtn = document.querySelector(".arrow-left");
-const nextBtn = document.querySelector(".arrow-right");
-const closeBtn = document.querySelector(".close-lightbox");
 
 
 //enableLightboxListeners
@@ -27,9 +23,14 @@ const enableLightboxListeners = (portfolio) => {
     document.querySelectorAll(".media-card-img")
   );
 
+  const prevBtn = document.querySelector(".arrow-left");
+console.log(prevBtn ,'bonjour pd')
+const nextBtn = document.querySelector(".arrow-right");
+const closeBtn = document.querySelector(".close-lightbox");
+
   //Création d'un tableaux de tous les éléments pour le media slide
   const slides = Array.from(document.querySelectorAll(".slide"));
- // console.log(slides);
+//  console.log(slides);
   //tableau contenant les identifiants de tous les médias à des fins de navigation
   const slidesIds = slides.map((slide) => parseInt(slide.dataset.id));
  // console.log(slidesIds);
@@ -48,21 +49,28 @@ const enableLightboxListeners = (portfolio) => {
         // display Lightbox
         sliderContainer.style.display = "block";
      
-        //Ajout d'un écouteur d'événement pour afficher le média précédent
+        // Ajout d'un écouteur d'événement pour afficher le média précédent
         prevBtn.addEventListener("click", (e) => {
           showSlide(parseInt(e.target.dataset.prev));
           console.log(e.target.dataset.prev);
         });
-
         //Ajout d'un écouteur d'événement pour afficher le média précédent
         nextBtn.addEventListener("click", (e) => {
           showSlide(parseInt(e.target.dataset.next));
-    //      console.log(e.target.dataset.next);
+         console.log( e.target.dataset.next);
         });
+        //Fermeture du slider
+closeBtn.addEventListener("click", () => {
+  sliderContainer.style.display = "none";
+  console.log(closeBtn , "ceci est le magnifique btn de monsieur yoanh ")
+});
+
   
         //addevent enter/escape
       }) //End mc.addEventListener
   ); //end mediaCardlist forEach
+
+
 window.addEventListener(
   "keydown",
   function (e) {
@@ -91,6 +99,10 @@ window.addEventListener(
     false
   );
   
+  window.addEventListener("click", function(event) {
+    console.log('event on window', event)
+
+  });
 
   //showSlide
   const showSlide = (index) => {
@@ -117,7 +129,4 @@ window.addEventListener(
   }; //end showSlide
 }; //end enableLightboxListeners
 
-//Fermeture du slider
-closeBtn.addEventListener("click", () => {
-  sliderContainer.style.display = "none";
-});
+

@@ -18,7 +18,7 @@ function photographerFactory(data) {
             <div class="profilInfos">
                 <p class="location">${city}, ${country}</p>
                 <p class="tagline">${tagline}</p>
-                <p class="price-card" >${price}€/jour</p>
+                <p class="price-card">${price}€/jour</p>
             </div>
             `;
 
@@ -29,3 +29,5 @@ function photographerFactory(data) {
     return { data, getUserCardDOM}
 
 }
+
+
