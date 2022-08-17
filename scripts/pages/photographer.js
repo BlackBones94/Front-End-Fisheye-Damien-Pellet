@@ -80,35 +80,19 @@ async function getData(photographerId) {
       portfolioSection.innerHTML += mediaCardDOM;
       lightboxSection.innerHTML += mediaSlidesDOM;
     });
-    // lightboxSection.innerHTML = gallerySlider
-    // portfolioSection.innerHTML = galleryContainer;
+  
   }
   
 
-  
 
-  // function displayMedia() {
-  //   const mediaModel = []
-  //   const portfolioSection = document.querySelector(".portfolio-section");
-  //   const lightboxSection = document.querySelector(".slider-modal");
-  //   portfolioSection.innerHTML = "";
-  //   data.photographers.forEach( media => {
-  //     const mediaData = data.media.filter( photographer => {
-  //       return media.photographerId === photographerId
-  //     });
-  //     mediaModel.push( new Photographer(photographer, mediaData)) 
-  //     const mediaCardDOM = mediaModel.getMediaCardDOM();
-  //     portfolioSection.appendChild(mediaCardDOM);
-  //   })
-  //     return mediaModel
-  // }
   
   //initialisation de la page medias
   async function init() {
     // chaine de requete 
     const urlParams = new URLSearchParams(window.location.search);
-    // analyse de la chaine et renvoi un element 
     const photographerId = parseInt(urlParams.get("photographer"));
+    
+    console.log(photographerId)
 
     const { photographer, portfolio, pathName, totalLikes, dayPrice } =
       await getData(photographerId);

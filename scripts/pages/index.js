@@ -1,4 +1,4 @@
-    
+
     async function getPhotographers() {
         const res = await fetch("data/photographers.json", {
           headers: {
@@ -17,7 +17,7 @@
           //mettre les données fetch par localstorage
           photographers: JSON.parse(localStorage.getItem("data")).photographers,
       
-          photographers: [...data.photographers],
+          // photographers: [...data.photographers], correction linter
         };
       }
     async function displayData(photographers) {

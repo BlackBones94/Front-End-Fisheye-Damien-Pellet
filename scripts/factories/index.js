@@ -1,3 +1,5 @@
+
+
 function photographerFactory(data) {
     // données JSON 
     const { name, portrait, city, country, tagline, price, id } = data;
@@ -26,7 +28,7 @@ function photographerFactory(data) {
     }
    
     // retourner les data et ma fonction getUser
-    return { data, getUserCardDOM}
+    return { data, getUserCardDOM,photographerFactory}
 
 }
 

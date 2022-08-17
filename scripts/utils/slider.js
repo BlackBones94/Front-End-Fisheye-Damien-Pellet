@@ -24,7 +24,6 @@ const enableLightboxListeners = (portfolio) => {
   );
 
   const prevBtn = document.querySelector(".arrow-left");
-console.log(prevBtn ,'bonjour pd')
 const nextBtn = document.querySelector(".arrow-right");
 const closeBtn = document.querySelector(".close-lightbox");
 
@@ -59,6 +58,7 @@ const closeBtn = document.querySelector(".close-lightbox");
           showSlide(parseInt(e.target.dataset.next));
          console.log( e.target.dataset.next);
         });
+        
         //Fermeture du slider
 closeBtn.addEventListener("click", () => {
   sliderContainer.style.display = "none";
