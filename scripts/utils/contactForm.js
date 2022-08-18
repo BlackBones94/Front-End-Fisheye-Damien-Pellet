@@ -1,7 +1,7 @@
 // recreation du formulaire selon le html existant 
 
 
-function formulaire(name, baseURL, id) {
+export function formulaire(name, baseURL, id) {
     const ModalForm = document.querySelector(".modal-form");
     ModalForm.innerHTML = `<div class="windowContact">
            <div class="modalContact">
@@ -97,7 +97,7 @@ function formulaire(name, baseURL, id) {
    }; 
     //Close modal formulaire by cross
     const CloseModal = document.querySelector(".formClose");
-    CloseModal.onclick = (e) => {
+    CloseModal.onclick = () => {
       ModalForm.style.display = "none";
     }
    
@@ -119,5 +119,4 @@ function formulaire(name, baseURL, id) {
     });
     
   }
-
 

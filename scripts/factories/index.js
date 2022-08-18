@@ -1,12 +1,11 @@
 
-
-function photographerFactory(data) {
+ export function photographerFactory(data) {
     // données JSON 
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
-    function getUserCardDOM() {
+     function getUserCardDOM() {
 
         const article = document.createElement('article')
         const baseURL = "photographer.html";
@@ -28,8 +27,7 @@ function photographerFactory(data) {
     }
    
     // retourner les data et ma fonction getUser
-    return { data, getUserCardDOM,photographerFactory}
+    return { data, getUserCardDOM}
 
 }
-
 

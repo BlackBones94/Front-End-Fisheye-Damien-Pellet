@@ -1,4 +1,7 @@
-
+import {formulaire} from "../utils/contactForm.js"
+import {MediaFactorie} from "../factories/photographer.js"
+import {handleButtonsOptions, sortData} from "../utils/selectBox.js"
+import {enableLightboxListeners} from "../utils/slider.js"
 // Data recuperer par local storage
 async function getData(photographerId) {
     // const res = await fetch("data/photographers.json", {
@@ -63,7 +66,7 @@ async function getData(photographerId) {
           </div>`;
   }
   
-  function displayMedia(portfolioArray) {
+ export function displayMedia(portfolioArray) {
     // let galleryContainer = "" ;
     // let gallerySlider = "";
     const portfolioSection = document.querySelector(".portfolio-section");
@@ -87,7 +90,7 @@ async function getData(photographerId) {
 
   
   //initialisation de la page medias
-  async function init() {
+   async function init() {
     // chaine de requete 
     const urlParams = new URLSearchParams(window.location.search);
     const photographerId = parseInt(urlParams.get("photographer"));
@@ -98,7 +101,7 @@ async function getData(photographerId) {
       await getData(photographerId);
     displayPhotographerInfo(photographer);
   
-  // Methode sort qui trie les element d'un tableau 
+    // Methode sort qui trie les element d'un tableau 
     const triPopularite = portfolio.sort((a, b) => {
       return a.likes < b.likes ? 1 : -1;
     });

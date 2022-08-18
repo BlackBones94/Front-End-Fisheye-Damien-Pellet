@@ -1,19 +1,29 @@
-class MediaFactorie  {
+export class MediaFactorie  {
     constructor(data) {
-        if(data.hasOwnProperty ("image")) {
-            // console.log("image")
-            return new Image(data);
+        // if(data.hasOwnProperty ("image")) {
+        //     // console.log("image")
+        //     return new Image(data);
+        // }
+        if(Object.prototype.hasOwnProperty.call(data, "image")){
+        return new Image(data)
         }
-        else if(data.hasOwnProperty("video")) {
-            // console.log("video")
+
+        // else if(data.hasOwnProperty("video")) {
+        //     // console.log("video")
+        //     return new Video(data)
+        // }
+        else if(Object.prototype.hasOwnProperty.call(data, "video")){
             return new Video(data)
-        }
+            }
+
+            // rajouter sinon  alerte
+
     console.log(data.type)
     }
 }
 
 
-class Image{
+export class Image{
     constructor (data) {
         this.id = data.id
         this.photographerId = data.photographerId
@@ -24,7 +34,7 @@ class Image{
         this.price = data.price
     }
 
-    getMediaCardDOM() {
+     getMediaCardDOM() {
         return  `
         <article>
             <div class ="media-card" data-id="${this.id}" data-title= "${this.title}" data-date="${this.date}" tabindex="0">
@@ -60,7 +70,7 @@ class Image{
     }
 }
 
-class Video {
+export class Video {
     constructor (data) {
         this.id = data.id
         this.photographerId = data.photographerId
@@ -71,7 +81,7 @@ class Video {
         this.price = data.price
     }
 
-    getMediaCardDOM() {
+     getMediaCardDOM() {
         return  `
         <article>
             <div class ="media-card" data-id="${this.id}" data-title= "${this.title}" data-date="${this.date}" tabindex="0">

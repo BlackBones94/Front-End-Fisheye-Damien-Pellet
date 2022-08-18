@@ -1,7 +1,7 @@
 //  static box
 
 
-function likesInfos(totalLikes, dayPrice) {
+   export function likesInfos(totalLikes, dayPrice) {
     const likesPriceBox = document.querySelector('.likesBox');
     likesPriceBox.innerHTML = `
     <div class="boxLikes" aria-label="Nombre de likes par jour">
@@ -18,12 +18,12 @@ function likesInfos(totalLikes, dayPrice) {
 
     let totalBox = `${totalLikes}`; 
 
- //increment likes
- const incrementButton = document.querySelectorAll(".media-card-likes");
- const likesTotal = document.querySelector(".numberLikesBox");
-// boucle qui increment un de plus au click
- for (let i = 0; i < incrementButton.length; i++) {
-   incrementButton[i].addEventListener("click", function (event) {
+    //increment likes
+    const incrementButton = document.querySelectorAll(".media-card-likes");
+    const likesTotal = document.querySelector(".numberLikesBox");
+    // boucle qui increment un de plus au click
+    for (let i = 0; i < incrementButton.length; i++) {
+    incrementButton[i].addEventListener("click", function (event) {
      
      let buttonClicked = event.target;
 
@@ -31,7 +31,7 @@ function likesInfos(totalLikes, dayPrice) {
 
      let textLikeValue = textLike.innerHTML;
 
-    //  return la chaine avec +1
+      //  return la chaine avec +1
      let newValue = parseInt(textLikeValue) + 1;
 
       likesTotal.innerHTML = ++totalBox;

@@ -1,4 +1,7 @@
-const selectSort = document.querySelector('.selectBox');
+import { displayMedia } from "../pages/photographer.js";
+import { likesInfos } from "./static.js";
+
+ const selectSort = document.querySelector('.selectBox');
 
 selectSort.innerHTML = `   <div class="works-sort">
         <div>
@@ -63,7 +66,7 @@ function closeSelect() {
 }
 
 
-function handleButtonsOptions() {
+export function handleButtonsOptions() {
   optionsButtons.forEach((button) => {
     button.onclick = () => {
       const buttonText = button.textContent;
@@ -81,7 +84,7 @@ function handleButtonsOptions() {
 
 /*////////////////////////////////////////////////////////////////////*/
 
-function sortData(data, photographer, totalLikes, dayPrice) {
+export function sortData(data, photographer, totalLikes, dayPrice) {
   function tri(data) {
     for (let k = 0; k < optionsButtons.length; k++) {
       optionsButtons[k].addEventListener('click', function (e) {
@@ -98,22 +101,22 @@ function sortData(data, photographer, totalLikes, dayPrice) {
             return new Date(b.date) - new Date(a.date);
           });
           displayMedia(mediasSortedByDate, photographer);
-          likesInfos(totalLikes, dayPrice);
-          enableLightboxListeners();
+          // likesInfos(totalLikes, dayPrice);
+          // enableLightboxListeners();
         } else if (e.target.dataset.filtre === 'Titre') {
           const mediasSortedByTitre = data.sort((a, b) =>
             a.title.localeCompare(b.title)
           );
           displayMedia(mediasSortedByTitre, photographer);
-          likesInfos(totalLikes, dayPrice);
-          enableLightboxListeners();
+          // likesInfos(totalLikes, dayPrice);
+          // enableLightboxListeners();
         } else if (e.target.dataset.filtre === 'Popularité') {
           const triPopularite = data.sort((a, b) => {
             return a.likes < b.likes ? 1 : -1;
           });
           displayMedia(triPopularite, photographer);
-          likesInfos(totalLikes, dayPrice);
-          enableLightboxListeners();
+          // likesInfos(totalLikes, dayPrice);
+          // enableLightboxListeners();
         }
       });
     }

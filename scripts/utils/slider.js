@@ -18,12 +18,12 @@ sliderContainer.innerHTML = `
 
 
 //enableLightboxListeners
-const enableLightboxListeners = (portfolio) => {
+  export const enableLightboxListeners = () => {
   const mediaCardsList = Array.from(
     document.querySelectorAll(".media-card-img")
   );
 
-  const prevBtn = document.querySelector(".arrow-left");
+const prevBtn = document.querySelector(".arrow-left");
 const nextBtn = document.querySelector(".arrow-right");
 const closeBtn = document.querySelector(".close-lightbox");
 
