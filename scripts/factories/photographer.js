@@ -49,6 +49,7 @@ export class Image{
                         </i>
                         <i class="far fa-heart  infos-Likes-Icon1" aria-label="Cliquer pour liker"></i>    
                         <p class="media-card-likes" aria-label="Ce média a ${this.likes} likes" >${this.likes}</p>  
+                        <p class="media-card-likes1" aria-label="Ce média a ${this.likes} likes" >${this.likes}</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +98,8 @@ export class Video {
                             </svg>
                         </i>
                         <i class="far fa-heart  infos-Likes-Icon1" aria-label="Cliquer pour liker"></i>    
-                        <p class="media-card-likes" aria-label="Ce média a ${this.likes} likes" >${this.likes}</p>  
+                        <p class="media-card-likes" aria-label="Ce média a ${this.likes} likes" >${this.likes}</p>
+                        <p class="media-card-likes1" aria-label="Ce média a ${this.likes} likes" >${this.likes}</p>  
                     </div>
                 </div>
             </div>

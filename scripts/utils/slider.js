@@ -74,10 +74,6 @@ closeBtn.addEventListener("click", () => {
 window.addEventListener(
   "keydown",
   function (e) {
-    if (e.key == "Enter") {
-      sliderContainer.style.display = "block";
-      nextBtn.focus();
-    }
     if (e.key == "Escape") {
       sliderContainer.style.display = "none";
     }
